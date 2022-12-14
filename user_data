@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt update -y
+sudo apt install -y nodejs nginx npm unzip zip
+sudo npm install -g pm2

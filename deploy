@@ -1,0 +1,23 @@
+#!/bin/sh
+
+## Empty home (supposed to already be)
+ssh ubuntu "rm -r *"
+
+## Remove zip and libraries (heavy)
+rm repo.zip
+rm -r api/node_modules
+
+## Send the website
+zip -r repo.zip api html/build nginx start
+scp repo.zip ubuntu:~
+
+## Unzip and run start
+ssh ubuntu "mkdir repo && unzip -u repo.zip -d repo && rm -r repo.zip"
+ssh ubuntu "chmod 777 repo/start"
+ssh ubuntu "cd repo && ./start"
+
+## Reinstall libraries
+cd api && npm i && cd ..
+
+## Remove zip here
+rm repo.zip

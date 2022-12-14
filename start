@@ -1,0 +1,38 @@
+#!/bin/sh
+## For some reason, bash doesn't allow pm2 to actually start the server
+## Little enigma here (it used to work)
+
+## Set up the links
+
+cd nginx/sites-enabled
+ln -sr ../sites-available/hamzam3.xyz.conf .
+ln -sr ../sites-available/default .
+cd ../..
+
+## Copy the configuration
+
+sudo rm -r /etc/nginx
+sudo cp -r nginx /etc
+
+## Copy the website
+
+sudo rm -r /var/www/html/*
+sudo mkdir /var/www/html/chat/
+sudo cp -r html/build/* /var/www/html/chat
+
+## Stop api
+sudo pm2 stop server
+
+## Copy the server files
+sudo rm -r /etc/api
+sudo cp -r api /etc/api
+cd /etc/api && sudo npm i ## Try to install dependencies globally
+cd ~
+
+## Start api
+sudo pm2 start /etc/api/server.js
+
+## Start nginx
+sudo systemctl restart nginx
+
+sudo rm -r repo repo.zip

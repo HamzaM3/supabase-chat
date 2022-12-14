@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background: rgb(98,188,255);
+  background: linear-gradient(180deg, rgba(98,188,255,1) 0%, rgba(98,188,255,1) 78%, rgba(238,214,48,1) 79%, rgba(238,214,48,1) 100%);
+  font-family: sans-serif;
+}
+
+.chat {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.messages {
+  background: white;
+  padding: 1em;
+  width: 50vw;
+  max-width: 500px;
+  height: 24em;
+  overflow-y: scroll;
+  word-wrap:break-word;
+  /* border-width: 2px 2px 1px 2px; */
+  border-width: 2px 2px 1px 2px;
+  border-radius: 20px 20px 0 0;
+  border-color: black;
+  border-style: solid;
+}
+
+.messages::-webkit-scrollbar {
+  display: none;
+}
+.messages > div {
+  word-wrap: break-word;
+  margin-bottom: .3em;
+}
+
+#content {
+  padding: .3em;
+  margin: 0;
+  word-wrap:break-word;
+  resize: none;
+  column-count: auto;
+  outline: none;
+  border-radius: 0 0 0 10px;
+  border-color: black;
+  border-width: 1px 1px 2px 2px;
+}
+
+.send {
+  max-width: 100px;
+  background: brown;
+  font-weight: bold;
+  color: white;
+  border-width: 1px 2px 2px 1px;
+  border-radius: 0 0 10px 0;
+  border-color: black;
+}
+
+.input-message {
+  height: 2.6em;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-self: stretch
+}
+
+.disconnect {
+  border-radius: 2.5ch;
+  background: rgb(254, 254, 96);
+  width: 13ch;
+  height: 5ch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: .2em;
+}
+
+.name-screen {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  height: 2em;
+  width: 40ch;
+}
+
+.name-screen, .name-screen > * {
+  font-size: 1.2rem;
+}
+
+.name-screen > input {
+  padding-left: 2ch;
+  outline: none;
+  border-width: 2px 1px 2px 2px;
+  border-radius: 10px 0 0 10px;
+  border-color: black;
+}
+
+.name-screen > button {
+  outline: none;
+  border-width: 2px 2px 2px 1px;
+  border-radius: 0 10px 10px 0;
+  border-color: black;
+  background: brown;
+  color: white
+}
+
+button, .disconnect {
+  cursor: pointer;
+}
