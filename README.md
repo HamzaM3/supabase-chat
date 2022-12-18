@@ -1,3 +1,1 @@
-# server-setup
-
-My server setup framework
+# Supabase chat
